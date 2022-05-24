@@ -1,6 +1,7 @@
 import cv2 as cv
 import numpy as np
 
+
 def interpolant(t):
     return t * t * t * (t * (t * 6 - 15) + 10)
 
@@ -75,7 +76,7 @@ def transform_block(arr, side):
     while i < len(arr):
         while j < len(arr[0]):
             val = arr[i, j][0]
-            arr[i-half:i+half, j-half:j+half] = terrain_picker(val)
+            arr[i - half:i + half, j - half:j + half] = terrain_picker(val)
             j += side
         i += side
         j = half
@@ -105,6 +106,7 @@ def terrain_picker(val):
         return [64, 70, 84]
     else:
         return [255, 255, 255]
+
 
 def transform_topography(arr):
     for i in range(len(arr)):
