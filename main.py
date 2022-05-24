@@ -73,6 +73,7 @@ def transform_block(arr, side):
     half = side // 2
     i = half
     j = half
+
     while i < len(arr):
         while j < len(arr[0]):
             val = arr[i, j][0]
@@ -120,10 +121,11 @@ def transform_topography(arr):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    fin = np.zeros((1000, 1000, 3), dtype='uint8')
-    arr = [[fn(j) for j in i] for i in generate_perlin_noise_2d((1000, 1000), (5, 5))]
-    for i in range(1000):
-        for j in range(1000):
+    size = 3000
+    fin = np.zeros((size, size, 3), dtype='uint8')
+    arr = [[fn(j) for j in i] for i in generate_perlin_noise_2d((size, size), (5, 5))]
+    for i in range(size):
+        for j in range(size):
             fin[i][j][0] += arr[i][j]
 
     cv.imshow('noise', fin)
