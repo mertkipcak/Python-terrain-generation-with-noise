@@ -5,7 +5,7 @@ import numpy as np
 def interpolant(t):
     return t * t * t * (t * (t * 6 - 15) + 10)
 
-
+# THIS CODE WAS FOUND ONLINE ON A PUBLIC REPO AND NOT WRITTEN BY MYSELF
 def generate_perlin_noise_2d(
         shape, res, tileable=(False, False), interpolant=interpolant
 ):
