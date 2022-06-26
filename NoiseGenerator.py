@@ -2,9 +2,7 @@ import numpy as np
 
 
 # THIS CODE WAS FOUND ONLINE ON A PUBLIC REPO AND NOT WRITTEN BY MYSELF
-def generate_perlin_noise_2d(
-        shape, res, tileable=(False, False)
-):
+def generate_noise(shape, res, tileable=(False, False)):
     def interpolant(t):
         return t * t * t * (t * (t * 6 - 15) + 10)
 

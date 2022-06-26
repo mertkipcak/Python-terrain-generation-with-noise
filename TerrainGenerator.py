@@ -1,22 +1,30 @@
+import numpy as np
 
-def biomize(elevation, temperature, side):
-    final = [[[0, 0, 0] for i in range(j)] for j in elevation]
-    half = side // 2
-    i = half
-    j = half
-    while i < len(elevation):
-        while j < len(elevation[0]):
-            ele = elevation[i, j][0]
-            temp = temperature[i, j][0]
-            final[i - half:i + half, j - half:j + half] = terrain_picker(val)
-            j += side
-        i += side
-        j = half
 
-    i = 0
-    while i < len(arr):
-        arr[:, i] = [0, 0, 0]
-        arr[i, :] = [0, 0, 0]
-        i += side
-    return arr
+def terrain_picker(val):
+    if val < 40:
+        return [200, 0, 0]
+    elif val < 100:
+        return [250, 50, 0]
+    elif val < 120:
+        return [250, 140, 0]
+    elif val < 135:
+        return [64, 212, 245]
+    elif val < 165:
+        return [10, 200, 10]
+    elif val < 195:
+        return [0, 100, 0]
+    elif val < 210:
+        return [64, 70, 84]
+    else:
+        return [255, 255, 255]
 
+
+def temp_biome(temp, picker=terrain_picker):
+    w = len(temp)
+    h = len(temp[0])
+    ret = np.zeros((w, w, 3), dtype='uint8')
+    for i in range(w):
+        for j in range(h):
+            ret[i][j] = picker(temp[i][j])
+    return ret
